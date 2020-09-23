@@ -12,7 +12,7 @@ const redirectHttps = (require, response, next) => {
 }
 
 app.use(redirectHttps)
-
+app.use(express.static('build'))
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
