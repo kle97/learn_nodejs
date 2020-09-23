@@ -3,7 +3,12 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 app.use(express.json())
-
+app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+        res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+        next()
+})
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
     console.log('Path:  ', request.path)
