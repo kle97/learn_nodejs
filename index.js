@@ -106,6 +106,7 @@ const unknownEndpoint = (request, response) => {
 app.use(unknownEndpoint)        // send error if unknown url
 
 const PORT = process.env.PORT || 3001
+console.log(process.env.PORT)
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
