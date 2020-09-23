@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Thomas Puck",
+  "number": "25-5-6631434"
+}
+
+###
+
+DELETE http://localhost:3001/api/persons/5
