@@ -5,8 +5,8 @@ app.use(cors())
 app.use(express.json())
 
 const redirectHttps = (require, response, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-        res.redirect(`https://${req.header('host')}${req.url}`)
+    if (require.header('x-forwarded-proto') !== 'https')
+        response.redirect(`https://${require.header('host')}${require.url}`)
     else
         next()
 }
