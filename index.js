@@ -1,8 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-app.use(cors())
-app.use(express.json())
+app.use(cors())         // cross-origin resource sharing fix
+app.use(express.json())         // auto json stringify
 
 const redirectHttps = (require, response, next) => {
     if (require.header('x-forwarded-proto') !== 'https')
@@ -11,8 +11,8 @@ const redirectHttps = (require, response, next) => {
         next()
 }
 
-app.use(redirectHttps)
-app.use(express.static('build'))
+app.use(redirectHttps)      // redirect http to https
+app.use(express.static('build'))        // serve static file aka react front end build files
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
@@ -22,7 +22,7 @@ const requestLogger = (request, response, next) => {
     next()
 }
 
-app.use(requestLogger)
+app.use(requestLogger)          // manual request logger, better use morgan
 
 let notes = [
     {
@@ -103,7 +103,7 @@ const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
 
-app.use(unknownEndpoint)
+app.use(unknownEndpoint)        // send error if unknown url
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
