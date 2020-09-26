@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build:ui": "rmdir /s build && cd ../learn_react && npm run build && xcopy /S /I /E \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_react\\build\" \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_nodejs\"",
+    "build:ui": "rmdir /s build && cd ../learn_react && npm run build && xcopy /S /I /E \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_react\\build\" \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_nodejs\\build\"",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
