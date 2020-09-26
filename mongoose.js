@@ -6,7 +6,7 @@ if (process.argv.length < 3) {
 }
 
 const password = process.argv[2]
-const dbName = "note-app"
+const dbName = 'note-app'
 const url = `mongodb+srv://user1:${password}@learn-nodejs.w7eyr.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -26,12 +26,12 @@ const note = new Note(
         important: true,
     },
     {
-        content: "Browser can execute only Javascript",
+        content: 'Browser can execute only Javascript',
         date: new Date(),
         important: false
     },
     {
-        content: "GET and POST are the most important methods of HTTP protocol",
+        content: 'GET and POST are the most important methods of HTTP protocol',
         date: new Date(),
         important: true
     }
