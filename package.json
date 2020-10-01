@@ -4,27 +4,35 @@
   "description": "",
   "main": "node index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build:ui": "rmdir /s build && cd ../learn_react && npm run build && xcopy /S /I /E \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_react\\build\" \"C:\\Users\\Khoa Le\\Documents\\Webstorm Projects\\learn_nodejs\\build\"",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push origin master && npm run deploy",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint --fix --ext .js,.jsx .",
-    "test": "jest --verbose"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
   },
   "author": "Khoa Le",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.6"
+    "express-async-errors": "^3.1.1",
+    "mongoose": "^5.10.6",
+    "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "jest": "^26.4.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^5.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

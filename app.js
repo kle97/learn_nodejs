@@ -1,7 +1,9 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
+require('express-async-errors')         // auto handling errors in async/await function, no need for try catch
 const cors = require('cors')
+const usersRouter = require('./controllers/users')
 const notesRouter = require('./controllers/notes')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
@@ -21,7 +23,7 @@ app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
-
+app.use('/api/users', usersRouter)
 app.use('/api/notes', notesRouter)
 
 app.use(middleware.unknownEndpoint)

@@ -1,22 +1,10 @@
-GET http://localhost:3001/api/notes
-Accept: application/json
-
-###
 POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content": "Browser can execute only Javascript",
-  "important": false
-}
-
-###
-POST http://localhost:3001/api/notes
-Content-Type: application/json
-
-{
-  "content": "GET and POST are the most important methods of HTTP protocol",
-  "important": true
+  "content": "The existing code tests need to be changed when users are added to the system",
+  "important": true,
+  "userId": "5f75594c9d977c2f1c179ed7"
 }
 
 ###
@@ -25,10 +13,33 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content": "test",
-  "important": true
+  "content": "User id of the note creator is at the start sent along the request",
+  "important": true,
+  "userId": "5f75594c9d977c2f1c179ed7"
 }
 
 ###
 
-DELETE http://localhost:3001/api/notes/5f6d95f2f6156d3304708023
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+###
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "mluukkai",
+  "name": "Matti Luukkainen",
+  "password": "salainen"
+}
+
+###
+
+
