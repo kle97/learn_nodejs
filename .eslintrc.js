@@ -9,6 +9,9 @@ module.exports = {
     'parserOptions': {
         'ecmaVersion': 12
     },
+
+    'plugins': ['only-warn'],   // eslint-plugin-only-warn -> downgrade eslint errors to warnings
+
     'rules': {
         'indent': [
             'error',

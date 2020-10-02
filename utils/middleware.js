@@ -19,6 +19,10 @@ const errorHandler = (error, request, response, next) => {
         return response.status(400).send({error: 'malformatted id'})
     } else if (error.name === 'ValidationError') {
         return response.status(400).json({error: error.message})
+    } else if (error.name === 'JsonWebTokenError') {
+        return response.status(401).json({
+            error: 'invalid token'
+        })
     }
 
     next(error)
@@ -26,7 +30,9 @@ const errorHandler = (error, request, response, next) => {
 
 const redirectHttps = (require, response, next) => {
     if (require.header('x-forwarded-proto') !== 'https')
-        response.redirect(`https://${require.header('host')}${require.url}`)
+        response.redirect(301, `https://${require.header('host')}${require.url}`)
+    else if(require.header('host') !== 'www')       // redirect * domain to www subdomain
+        response.redirect(301, `https://www.${require.url}`)
     else
         next()
 }

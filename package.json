@@ -21,12 +21,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.6",
     "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
+    "eslint-plugin-only-warn": "^1.0.2",
     "jest": "^26.4.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
