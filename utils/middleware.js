@@ -31,7 +31,7 @@ const errorHandler = (error, request, response, next) => {
 const redirectHttps = (require, response, next) => {
     if (require.header('x-forwarded-proto') !== 'https')
         response.redirect(301, `https://${require.header('host')}${require.url}`)
-    else if(require.header('host') !== 'www')       // redirect * domain to www subdomain
+    else if(require.header('host') !== 'www.')       // redirect * domain to www subdomain
         response.redirect(301, `https://www.${require.url}`)
     else
         next()
