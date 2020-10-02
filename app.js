@@ -7,7 +7,7 @@ const usersRouter = require('./controllers/users')
 const notesRouter = require('./controllers/notes')
 const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'development') {
     app.use(middleware.redirectHttps) // enforce ssl https
 }
 const logger = require('./utils/logger')
