@@ -34,8 +34,8 @@ const redirectHttps = (require, response, next) => {
     logger.info(require.url)
     if (require.header('x-forwarded-proto') !== 'https')
         response.redirect(301, `https://${require.header('host')}${require.url}`)
-    else if(require.header('host') !== 'www')       // redirect * domain to www subdomain
-        response.redirect(301, `https://www${require.url}`)
+    else if(!require.header('host').match(/^www\..*/i))       // redirect * domain to www subdomain
+        response.redirect(301, `https://www.${require.header('host')}${require.url}`)
     else
         next()
 }
